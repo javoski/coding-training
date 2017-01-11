@@ -7,8 +7,7 @@ var intersect = function(nums1, nums2) {
     const hash = {}
     const result = []
     nums1.forEach(n => {
-        hash[n] = hash[n] || 0
-        hash[n]++
+        hash[n] = (hash[n] || 0) + 1
     })
     nums2.forEach(n => {
         if (hash[n]-- > 0) {
