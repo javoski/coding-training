@@ -1,0 +1,1 @@
+[Getting along with Integer Partitions](http://www.codewars.com/kata/getting-along-with-integer-partitions/train/javascript)
