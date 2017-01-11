@@ -26,3 +26,36 @@ var DI = function (dependency) {
 ```
 >
 Your task is create DI.prototype.inject method that will return a new function with resolved dependencies. And don't forget about nested functions. You shouldn't handle them.
+
+
+这个题目还挺有意思的，看了好久才看懂是怎么回事。简单点说就是编写一个 DI 类，当 new 一个 DI 实例的时候传入一个依赖对象，得到一个依赖注入的实例，实例的 inject 方法接受一个函数，函数中的参数就是与依赖对象属性名对应（参数名与属性名一样，与顺序无关）的值(它通常是函数，当然也可以是其他类型的值)，最后返回一个包含依赖的函数。（实在表达无能😂）
+
+要解这道题，首先要找出传入 inject 的函数 func 的各个参数名，考虑调用func 的toString， 然后再用正则，比如对于 inject(function func(second, first) {...}):
+```js
+let args = /^[^(]+\(([^)]+)/.exec(func.toString())
+/**
+ * args: ["function func(second, first", "second, first", ...]
+ */
+let deps = args[1].split(/\s*,\s*/)
+// deps: ["second", "first"]
+```
+接下来的就比较简单了，最后的代码如下:
+```js
+/**
+ * Constructor DependencyInjector
+ * @param {Object} - object with dependencies
+ */
+var DI = function (dependency) {
+  this.dependency = dependency;
+};
+
+// Should return new function with resolved dependencies
+DI.prototype.inject = function (func) {
+  // Your code goes here
+  let args = /^[^(]+\(([^)]+)/.exec(func.toString())
+  let deps = args ? args[1].split(/\s*,\s*/).map(d => this.dependency[d]) : []
+  return function () {
+    return func.apply(this, deps)
+  }
+}
+```
