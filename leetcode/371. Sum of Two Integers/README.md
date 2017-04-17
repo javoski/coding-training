@@ -2,8 +2,8 @@
 
 >Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
 >
-Example:
-Given a = 1 and b = 2, return 3.
+>Example:
+>Given a = 1 and b = 2, return 3.
 
 不使用'+'和'-'运算实现两个整数相加
 ```js
