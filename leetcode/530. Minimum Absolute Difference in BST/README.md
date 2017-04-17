@@ -4,21 +4,21 @@
 
 >Example:
 >
-```
-Input:
-   1
-    \
-     3
-    /
-   2
+>```
+>Input:
+>   1
+>    \
+>     3
+>    /
+>   2
 >   
-Output:
-1
+>Output:
+>1
 >
-Explanation:
-The minimum absolute difference is 1, which is the difference between 2 and 1 (or between 2 and 3).
-```
-**Note:** There are at least two nodes in this BST.
+>Explanation:
+>The minimum absolute difference is 1, which is the difference between 2 and 1 (or between 2 and 3).
+>```
+>**Note:** There are at least two nodes in this BST.
 
 对二叉搜索树的结构的考察，对于根结点root，在树的其他结点中与root的值的差绝对值最小的是min(max(root.left), min(root.right))，再用简单的递归实现即可。
 

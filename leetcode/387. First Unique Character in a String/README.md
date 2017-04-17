@@ -2,15 +2,15 @@
 
 >Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
 >
-Examples:
+>Examples:
 >```
-s = "leetcode"
-return 0.
+>s = "leetcode"
+>return 0.
 >
-s = "loveleetcode",
-return 2.
-Note: You may assume the string contain only lowercase letters.
-```
+>s = "loveleetcode",
+>return 2.
+>Note: You may assume the string contain only lowercase letters.
+>```
 
 使用hash可以达到O(n)时间复杂度，不过题目中说可以默认字符串只包含小写字母，所以可以利用长度为26的数组实现。
 ```js

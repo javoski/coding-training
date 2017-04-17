@@ -9,14 +9,14 @@
 >Example:
 >
 >```Input:
-s = "abcd"
-t = "abcde"
+>s = "abcd"
+>t = "abcde"
 >
 >Output:
-e
+>e
 >
 >Explanation:
-'e' is the letter that was added.
+>'e' is the letter that was added.
 >```
 
 题目的大意就是在两个字符串中，其中有一个字符串相比另外一个字符串多出来一个字符，找出这个字符。
