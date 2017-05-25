@@ -13,8 +13,6 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
  * @return {number}
  */
 var singleNumber = function(nums) {
-   return nums.reduce((v, n) => {
-       return v ^ n
-   }, 0) 
+   return nums.reduce((v, n) => v ^ n, 0)
 }
 ```
