@@ -20,7 +20,7 @@
 >```
 >**Note:** The input will be a non-empty word consisting of uppercase and lowercase latin letters.
 
-判断是个单词是否为以下三种情况：
+判断某个单词是否为以下三种情况：
 1. 全部大写
 2. 全部小写
 3. 第一个字母大写，剩下的小写
