@@ -25,3 +25,22 @@ var plusOne = function(digits) {
     return digits
 }
 ```
+
+当然也有性能更好的方法:
+```js
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function(digits) {
+    for (let i = digits.length - 1; i >= 0; i--) {
+        if (digits[i] < 9) {
+            digits[i]++
+            return digits
+        }
+        digits[i] = 0
+    }
+    digits.unshift(1)
+    return digits
+}
+```
