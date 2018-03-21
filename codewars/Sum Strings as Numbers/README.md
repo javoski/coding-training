@@ -29,7 +29,7 @@ function sumStrings(a, b) {
 }
 ```
 
-然后看了别人写的，发现我写的还是太啰嗦了😂，熟悉位运算真的了不起:
+然后看了别人写的，发现我写的还是太啰嗦了😂:
 ```js
 function sumStrings(a, b) {
   var res = '', c = 0;
