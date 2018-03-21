@@ -8,7 +8,7 @@ For example:
 sumStrings('1','2') // => '3'
 ```
 A string representation of an integer will contain no characters besides the ten numerals "0" to "9".
-
+-----
 典型的大数加法，我写的函数如下:
 ```js
 function sumStrings(a, b) {

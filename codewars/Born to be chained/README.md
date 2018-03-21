@@ -60,7 +60,7 @@ c2.execute(); // == fns.sum(fns.sum(1, 2), 5) == 8
 
 c1.execute(); // == fns.sum(1, 2) == 3
 ```
-
+------
 可以用 value 是否等于 null 来判断是否执行过方法链里面的方法，但是考虑到方法参数值也可以为 null，所以另外定义了一个参数 resolved，用来表示是否已经执行过某个方法了。
 ```js
 function chain(fns) {
