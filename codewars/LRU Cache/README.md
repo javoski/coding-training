@@ -53,50 +53,40 @@ Full API Specification:
 ```js
 function LRUCache(capacity, init) {
   const map = new Map()
-  let _capacity = capacity
-  const cached = []
+  const queue = []
 
   function useKey (key) {
-    const index = cached.findIndex(k => k === key)
-    cached.splice(index, 1)
-    cached.push(key)
+    const i = queue.indexOf(key)
+    queue.splice(i, 1)
+    queue.push(key)
   }
 
   Object.defineProperty(this, 'size', {
     get () {
-      return cached.length
+      return queue.length
     }
   })
+
   Object.defineProperty(this, 'capacity', {
     get () {
-      return _capacity
+      return capacity
     },
     set (n) {
-      if (_capacity > n) {
-        for (let i = 0; i < _capacity - n; i++) {
-          this.delete(cached[i])
-        }
+      capacity = n
+      while (capacity < queue.length) {
+        this.delete(queue[0])
       }
-      _capacity = n
     }
   })
 
   Object.defineProperty(this, 'delete', {
     value: function (key) {
-      let ret = true
       if (map.has(key)) {
-        const delIndex = cached.findIndex(k => key === k)
-        cached.splice(delIndex, 1)
+        const i = queue.indexOf(key)
+        queue.splice(i, 1)
         map.delete(key)
       }
-      const descriptor = Object.getOwnPropertyDescriptor(this, key)
-      if (descriptor && descriptor.configurable === false) ret = false
-      try {
-        delete this[key]
-      } catch (e) {
-        return false
-      }
-      return ret
+      return delete this[key]
     }
   })
 
@@ -106,11 +96,11 @@ function LRUCache(capacity, init) {
         map.set(key, value)
         useKey(key)
       } else  {
-        if (_capacity <= cached.length) {
-          this.delete(cached[0])
+        if (capacity <= queue.length) {
+          this.delete(queue[0])
         } 
         map.set(key, value)
-        cached.push(key)
+        queue.push(key)
         Object.defineProperty(this, key, {
           get () {
             useKey(key)
